@@ -8,6 +8,12 @@
     }
     if (isset($_POST['action'])) {
         $lastID = 0;
+        if(!empty($topics)){
+            $lastitem = end($topics);
+            $lastID = $lastitem->id;
+
+        }
+        $newid = $lastID + 1;
     if($_POST['action']=='add'){    
         array_push($topics,
         (object)[

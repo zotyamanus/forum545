@@ -18,5 +18,13 @@
     {
         "id": 1234,
         "name": "citrom"
+    },
+    {
+        "id": "1234",
+        "name": "citrom"
+    },
+    {
+        "id": "1234",
+        "name": "citrom"
     }
 ]
