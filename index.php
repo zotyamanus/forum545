@@ -26,9 +26,22 @@
     file_put_contents($fileName,$JsonString);
     
     }
-    elseif(($_POST['action']=='delete')){
-
+    elseif ($_POST['action'] == 'delete') {
+    // el: A törlendő téma ID-ja
+    $deleteID = $_POST['id'];  // A törlendő téma ID-ja
+    foreach ($topics as $key => $value) {
+        if ($value->id == $deleteID) {
+            // el: Ha megtaláltuk az ID-t, akkor eltávolítjuk a tömbből
+            unset($topics[$key]);
+            break;  // el: Leállunk, miután megtaláltuk a törlendő elemet
+        }
     }
+
+    // el: Az új topics tömb JSON-ba alakítása és elmentése a fájlba
+    $JsonString = json_encode(array_values($topics), JSON_PRETTY_PRINT);  // el: új indexek
+    file_put_contents($fileName, $JsonString);
+}
+
     }
 
 
