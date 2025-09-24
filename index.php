@@ -1,41 +1,57 @@
 <?php
-$filename = "data.json";
-if(file_exists($filename)){
-    $jsonString = file_get_contents($filename);
-    $topics = json_decode($jsonString);
-}else{
-    $topics=[];
-}
+    $fileName = 'data.json';
+    if (file_exists($fileName)) {
+        $jsonString = file_get_contents($fileName);
+        $topics = json_decode($jsonString);
+    } else {
+        $topics = [];
+    }
+    if (isset($_POST['action'])) {
+        $lastID = 0;
+    if($_POST['action']=='add'){    
+        array_push($topics,
+        (object)[
+            "id"=>"1234",
+            "name"=>$_POST['topic']
+        ] 
+        );
+    
+    $JsonString = json_encode($topics, JSON_PRETTY_PRINT);
+    file_put_contents($fileName,$JsonString);
+    
+    }
+    elseif(($_POST['action']=='delete')){
+
+    }
+    }
 
 
-$szoveg ="";
-if(isset($_POST["topic"])){
-    $topics=[];
-    array_push($topics, $_POST["topic"]);
-    $jsonString= json_encode($topics);
-    $szoveg = $jsonString;
-    file_put_contents($filename, $jsonString);
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>forum</title>
+    <title>Forum</title>
 </head>
 <body>
-
-<?php
-echo $szoveg
-?>
     <h1>Témák:</h1>
-    <form method=POST>
+    <ol>
+    <?php
+        foreach ($topics as $value) {
+            echo '<li>' . $value->name . '
+            <form method="post">
+            <input type="hidden" name="id" value="'.$value->id.'">
+            <input type="hidden" value="törlés">
+            <input type="submit" name="action" value="delete">
+            </form>';
+        }
+    ?>
+    </ol>
+    <form method="POST">
+        <input type="hidden" name="action" value="add">
         <input type="text" name="topic">
-        <input type="submit">
-        
-
+        <input type="submit" value="Add">
     </form>
 </body>
 </html>
