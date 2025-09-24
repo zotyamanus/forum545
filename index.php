@@ -17,7 +17,7 @@
     if($_POST['action']=='add'){    
         array_push($topics,
         (object)[
-            "id"=>"1234",
+            "id"=>$newid,
             "name"=>$_POST['topic']
         ] 
         );
