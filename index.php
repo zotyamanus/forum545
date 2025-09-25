@@ -1,11 +1,16 @@
 <?php
     $fileName = 'data.json';
     if (file_exists($fileName)) {
-        $jsonString = file_get_contents($fileName);
-        $topics = json_decode($jsonString);
-    } else {
+    $jsonString = file_get_contents($fileName);
+    $topics = json_decode($jsonString);
+
+    // Ha hibás vagy üres a JSON, akkor legyen üres tömb
+    if (!is_array($topics)) {
         $topics = [];
     }
+} else {
+    $topics = [];
+}
     if (isset($_POST['action'])) {
         $lastID = 0;
         if(!empty($topics)){
