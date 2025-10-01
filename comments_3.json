@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "topic_id": "3",
+        "author": "nev",
+        "message": "komment",
+        "date": "2025-10-01 08:34:22"
+    },
+    {
+        "id": 2,
+        "topic_id": "3",
+        "author": "h",
+        "message": "asd",
+        "date": "2025-10-01 09:44:39"
+    },
+    {
+        "id": 3,
+        "topic_id": "3",
+        "author": "asd",
+        "message": "asd",
+        "date": "2025-10-01 09:44:44"
+    },
+    {
+        "id": 4,
+        "topic_id": "3",
+        "author": "asd",
+        "message": "asd",
+        "date": "2025-10-01 09:44:50"
+    }
+]
